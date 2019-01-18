@@ -7,12 +7,23 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { StoreModule } from '@ngrx/store';
 
+import { MaterialModule } from './material.module';
+
 import { AppComponent } from './app.component';
 import { routes } from './app.routing';
 
+import { rootReducer } from '@store/app.reducer';
+
+import { TodoService } from '@services/todo/todo.service';
+
+import { TodoComponent } from '@components/todo/todo.component';
+import { TodoListComponent } from '@components/todo-list/todo-list.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TodoComponent,
+    TodoListComponent
   ],
   imports: [
     BrowserModule,
@@ -20,12 +31,15 @@ import { routes } from './app.routing';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
-    // StoreModule.forRoot(rootReducer)
+    StoreModule.forRoot(rootReducer),
+    MaterialModule
   ],
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }],
+  },
+    TodoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

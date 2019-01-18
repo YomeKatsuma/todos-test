@@ -1,0 +1,7 @@
+<ul class="todo-list"
+    *ngIf="(todos$ | async) as todos; else LoadingTodos">
+  <app-todo *ngFor="let todo of todos; trackBy: trackByFn"
+            [todo]="todo">
+  </app-todo>
+</ul>
+<ng-template #LoadingTodos>Chargement des Todos...</ng-template>

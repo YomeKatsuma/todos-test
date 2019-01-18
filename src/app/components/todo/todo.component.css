@@ -1,0 +1,30 @@
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  width: 100%;
+  margin: 0.5em 0;
+}
+
+.todo-content {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}
+
+.todo-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 32px;
+  min-height: 32px;
+  border: 1px solid rgba(64, 64, 64, 0.25);
+  border-color: rgba(64, 64, 64, 0.25);
+  border-radius: 32px;
+  color: #ff4081;
+}
+
+.todo-title {
+  margin: 0.25em 1em;
+}
