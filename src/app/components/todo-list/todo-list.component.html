@@ -1,5 +1,5 @@
 <ul class="todo-list"
-    *ngIf="(todos$ | async) as todos; else LoadingTodos">
+    *ngIf="todos.length; else LoadingTodos">
   <app-todo *ngFor="let todo of todos; trackBy: trackByFn"
             [todo]="todo">
   </app-todo>

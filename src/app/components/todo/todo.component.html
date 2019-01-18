@@ -1,6 +1,8 @@
 <li class="todo-item">
-  <div class="todo-content">
-    <div class="todo-state">
+  <div class="todo-content"
+       [class.completed]="todo.completed">
+    <div class="todo-state"
+         (click)="toggleTodoState()">
       <i class="material-icons">{{ stateIcon }}</i>
     </div>
     <div class="todo-title">

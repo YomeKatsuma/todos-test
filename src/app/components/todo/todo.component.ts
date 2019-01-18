@@ -20,7 +20,15 @@ import * as TodoActions from '@store/todo/todo.actions';
 })
 export class TodoComponent implements OnInit {
 
-  @Input() todo: Todo;
+  @Input()
+  get todo(): Todo {
+    return this._todo;
+  }
+  set todo(todo: Todo) {
+    this._todo = todo;
+    this.stateIcon = this._todo.completed ? 'done' : '';
+  }
+  private _todo: Todo;
 
   stateIcon: string;
 
@@ -31,5 +39,10 @@ export class TodoComponent implements OnInit {
 
   ngOnInit() {
     this.stateIcon = this.todo.completed ? 'done' : '';
+  }
+
+  toggleTodoState() {
+    const action = new TodoActions.ToggleAction(this.todo.id);
+    this._store.dispatch(action);
   }
 }

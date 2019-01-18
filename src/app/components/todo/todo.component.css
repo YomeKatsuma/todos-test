@@ -12,6 +12,9 @@
   align-items: center;
   width: 100%;
 }
+.todo-content.completed {
+  opacity: 0.33;
+}
 
 .todo-state {
   display: flex;
@@ -23,8 +26,13 @@
   border-color: rgba(64, 64, 64, 0.25);
   border-radius: 32px;
   color: #ff4081;
+  cursor: pointer;
 }
 
 .todo-title {
   margin: 0.25em 1em;
+}
+
+.todo-content.completed .todo-title {
+  text-decoration: line-through;
 }

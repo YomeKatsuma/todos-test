@@ -7,6 +7,9 @@ import { AppState, rootReducer } from '@store/app.reducer';
 
 import { TodoComponent } from '@components/todo/todo.component';
 import { TodoListComponent } from './todo-list.component';
+import { Todo } from '@models/todo.model';
+
+import * as TodoActions from '@store/todo/todo.actions';
 
 @Component({
   selector: 'app-test-cmp',
@@ -43,5 +46,24 @@ describe('TodoListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should order Todos - completed at the end of the list', () => {
+    const todos: Todo[] = [{
+      id: 1,
+      title: 'completed Todo',
+      completed: true
+    }, {
+      id: 1,
+      title: 'a Todo',
+      completed: false
+    }, {
+      id: 1,
+      title: 'a Todo',
+      completed: false
+    }];
+    const action = new TodoActions.PopulateTodosAction(todos);
+    store.dispatch(action);
+    expect(component.todos[2].completed).toBeTruthy();
   });
 });

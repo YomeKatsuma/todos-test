@@ -8,7 +8,7 @@ export const MOCKED_TODOS: Todo[] = [
   }, {
     id: 2,
     title: 'Coder la US 1 pour le test des Todos',
-    completed: false
+    completed: true
   }, {
     id: 3,
     title: 'Coder la US 2 pour le test des Todos',
@@ -19,7 +19,7 @@ export const MOCKED_TODOS: Todo[] = [
     completed: false
   }, {
     id: 5,
-    title: 'Coder la US 5 pour le test des Todos',
+    title: 'Coder la US 4 pour le test des Todos',
     completed: false
   }
 ];
