@@ -5,12 +5,13 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef
 } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
-import { Todo } from '@models/todo.model';
-import { AppState } from '@store/app.reducer';
-import * as TodoActions from '@store/todo/todo.actions';
+import { Todo } from '../models/todo.model';
+import { TodosState } from '../store/todos.reducer';
+import * as TodoActions from '../store/todo.actions';
 
 @Component({
   selector: 'app-todo',
@@ -34,7 +35,9 @@ export class TodoComponent implements OnInit {
 
   constructor (
     private _changeDetection: ChangeDetectorRef,
-    private _store: Store<AppState>
+    private _store: Store<TodosState>,
+    private _router: Router,
+    private _route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -44,5 +47,10 @@ export class TodoComponent implements OnInit {
   toggleTodoState() {
     const action = new TodoActions.ToggleAction(this.todo.id);
     this._store.dispatch(action);
+  }
+
+  displayDetail() {
+    console.log('displatDetail ', this._todo);
+    this._router.navigate(['/', { id: this.todo.id }]);
   }
 }

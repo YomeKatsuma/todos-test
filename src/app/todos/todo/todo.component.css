@@ -31,6 +31,15 @@
 
 .todo-title {
   margin: 0.25em 1em;
+  cursor: pointer;
+}
+.todo-title .todo-link {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.250s ease;
+}
+.todo-title .todo-link:hover {
+  color: #ff4081;
 }
 
 .todo-content.completed .todo-title {

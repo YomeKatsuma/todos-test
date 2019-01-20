@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { Todo } from '../../models/todo.model';
+import { Todo } from '../models/todo.model';
 
 export const POPULATE_TODOS = '[TODO] populate';
 export const TOGGLE_TODO = '[TODO] toggle';

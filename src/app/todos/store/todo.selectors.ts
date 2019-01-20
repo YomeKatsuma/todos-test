@@ -1,9 +1,9 @@
 import { createSelector } from '@ngrx/store';
 
-import { Todo } from '@models/todo.model';
-import { AppState } from '@store/app.reducer';
+import { Todo } from '../models/todo.model';
+import { TodosState } from './todos.reducer';
 
-export const getTodos = (state: AppState) => state.todos;
+export const getTodos = (state: TodosState) => state.todos;
 
 export const getVisibleTodos = createSelector(
   getTodos,

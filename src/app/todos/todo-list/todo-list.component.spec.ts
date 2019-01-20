@@ -1,15 +1,17 @@
+import { RouterTestingModule } from '@angular/router/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 
 import { Store, StoreModule } from '@ngrx/store';
 
-import { AppState, rootReducer } from '@store/app.reducer';
+import { MaterialModule } from '../material.module';
 
-import { TodoComponent } from '@components/todo/todo.component';
+import { TodosState, todosReducer } from '../store/todos.reducer';
+import * as TodoActions from '../store/todo.actions';
+
+import { TodoComponent } from '../todo/todo.component';
 import { TodoListComponent } from './todo-list.component';
-import { Todo } from '@models/todo.model';
-
-import * as TodoActions from '@store/todo/todo.actions';
+import { Todo } from '../models/todo.model';
 
 @Component({
   selector: 'app-test-cmp',
@@ -20,7 +22,7 @@ export class TestComponent { }
 describe('TodoListComponent', () => {
   let component: TodoListComponent;
   let fixture: ComponentFixture<TodoListComponent>;
-  let store: Store<AppState>;
+  let store: Store<TodosState>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -30,7 +32,11 @@ describe('TodoListComponent', () => {
         TestComponent
       ],
       imports: [
-        StoreModule.forRoot(rootReducer)
+        MaterialModule,
+        RouterTestingModule.withRoutes([
+          { path: '', component: TestComponent }
+        ]),
+        StoreModule.forRoot(todosReducer)
       ]
     }).compileComponents();
   }));

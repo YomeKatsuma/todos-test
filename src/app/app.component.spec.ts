@@ -4,8 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule, Store } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
-import { MaterialModule } from './material.module';
-import { rootReducer } from './store/app.reducer';
+import { MaterialModule } from './todos/material.module';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -14,9 +13,8 @@ describe('AppComponent', () => {
         AppComponent
       ],
       imports: [
-        RouterTestingModule,
         MaterialModule,
-        StoreModule.forRoot(rootReducer)
+        RouterTestingModule
       ]
     }).compileComponents();
   }));

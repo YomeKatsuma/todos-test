@@ -5,9 +5,8 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AppState } from '@store/app.reducer';
-import { Todo } from '@models/todo.model';
-import { b } from '@angular/core/src/render3';
+import { TodosState } from '../store/todos.reducer';
+import { Todo } from '../models/todo.model';
 
 @Component({
   selector: 'app-todo-list',
@@ -21,7 +20,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   private _subscriptionGetTodos: Subscription;
 
   constructor (
-    private _store: Store<AppState>
+    private _store: Store<TodosState>
   ) {
     this.getTodos();
   }

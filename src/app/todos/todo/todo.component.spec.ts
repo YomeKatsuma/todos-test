@@ -4,12 +4,14 @@ import { Component } from '@angular/core';
 
 import { Store, StoreModule } from '@ngrx/store';
 
-import { AppState, rootReducer } from '@store/app.reducer';
+import { MaterialModule } from '../material.module';
+
+import { TodosState, todosReducer } from '../store/todos.reducer';
+import * as TodoActions from '../store/todo.actions';
 
 import { TodoComponent } from './todo.component';
-import { Todo } from '@models/todo.model';
+import { Todo } from '../models/todo.model';
 
-import * as TodoActions from '@store/todo/todo.actions';
 import { tap } from 'rxjs/operators';
 
 @Component({
@@ -21,7 +23,7 @@ export class TestComponent { }
 describe('TodoComponent', () => {
   let component: TodoComponent;
   let fixture: ComponentFixture<TodoComponent>;
-  let store: Store<AppState>;
+  let store: Store<TodosState>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -30,10 +32,11 @@ describe('TodoComponent', () => {
         TestComponent
       ],
       imports: [
+        MaterialModule,
         RouterTestingModule.withRoutes([
           { path: '', component: TestComponent }
         ]),
-        StoreModule.forRoot(rootReducer),
+        StoreModule.forRoot(todosReducer)
       ]
     }).compileComponents();
   }));

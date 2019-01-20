@@ -6,7 +6,10 @@
       <i class="material-icons">{{ stateIcon }}</i>
     </div>
     <div class="todo-title">
-      {{ todo.title }}
+      <a class="todo-link"
+         [routerLink]="[todo.id]">
+        {{ todo.title }}
+      </a>
     </div>
   </div>
 </li>
